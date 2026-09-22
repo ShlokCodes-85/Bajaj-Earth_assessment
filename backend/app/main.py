@@ -88,7 +88,7 @@ async def lifespan(_: FastAPI):
 app = FastAPI(title="Bajaj Earths Sheets Sync API", version="1.0.0", lifespan=lifespan)
 allowed_origins = {
     "http://localhost:5173",
-    "https://bajaj-earth-assessment-m1w3-dvh6alzup.vercel.app",
+    "https://bajaj-earth-assessment-m1w3-dnt4j4gsm.vercel.app",
     settings.frontend_origin.rstrip("/"),
 }
 app.add_middleware(

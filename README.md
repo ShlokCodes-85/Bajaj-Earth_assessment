@@ -2,7 +2,7 @@
 
 Real-time Google Sheets to web synchronization for the Bajaj Earths technical task. The deployed application is available at:
 
-- Frontend: `https://bajaj-earth-assessment-m1w3-dvh6alzup.vercel.app/`
+- Frontend: `https://bajaj-earth-assessment-m1w3-dnt4j4gsm.vercel.app/`
 - Backend: `https://bajaj-earth-assessment.onrender.com`
 
 ## Stack
@@ -126,7 +126,7 @@ Set these Render environment variables:
 
 ```env
 ENVIRONMENT=production
-FRONTEND_ORIGIN=https://bajaj-earth-assessment-m1w3-dvh6alzup.vercel.app
+FRONTEND_ORIGIN=https://bajaj-earth-assessment-m1w3-dnt4j4gsm.vercel.app
 POLL_INTERVAL_SECONDS=3
 DEMO_SHEET_ID=your_spreadsheet_id
 GOOGLE_SERVICE_ACCOUNT_JSON=your_complete_service_account_json
