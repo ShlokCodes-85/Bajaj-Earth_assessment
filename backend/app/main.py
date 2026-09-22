@@ -86,7 +86,18 @@ async def lifespan(_: FastAPI):
 
 
 app = FastAPI(title="Bajaj Earths Sheets Sync API", version="1.0.0", lifespan=lifespan)
-app.add_middleware(CORSMiddleware, allow_origins=[settings.frontend_origin], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
+allowed_origins = {
+    "http://localhost:5173",
+    "https://bajaj-earth-assessment-m1w3-dvh6alzup.vercel.app",
+    settings.frontend_origin.rstrip("/"),
+}
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=sorted(origin for origin in allowed_origins if origin),
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def read_sheet(mode: Mode) -> SheetSnapshot:
