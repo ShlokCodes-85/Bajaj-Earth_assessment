@@ -94,6 +94,7 @@ allowed_origins = {
 app.add_middleware(
     CORSMiddleware,
     allow_origins=sorted(origin for origin in allowed_origins if origin),
+    allow_origin_regex=r"https://[a-z0-9-]+\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
