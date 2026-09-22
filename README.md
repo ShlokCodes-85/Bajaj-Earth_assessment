@@ -9,7 +9,7 @@ Real-time Google Sheets to web synchronization for the Bajaj Earths technical ta
 
 - Frontend: React, Vite, JavaScript, Tailwind CSS v4, Lucide icons
 - Backend: Python, FastAPI, gspread, Google Sheets API
-- Live updates: FastAPI polling every 3 seconds plus WebSocket push
+- Live updates: FastAPI polling every 10 seconds plus WebSocket push
 - Deployment: Vercel frontend with a Render FastAPI backend
 
 The application uses one Python backend service. There is no separate Node.js API layer.
@@ -63,7 +63,7 @@ Open `http://localhost:5173`. Without Google credentials, the backend uses an in
 
 ```env
 FRONTEND_ORIGIN=http://localhost:5173
-POLL_INTERVAL_SECONDS=3
+POLL_INTERVAL_SECONDS=10
 DEMO_SHEET_ID=your_spreadsheet_id
 GOOGLE_SERVICE_ACCOUNT_JSON={"type":"service_account",...}
 GOOGLE_OAUTH_CLIENT_JSON=path/to/oauth_client.json
@@ -79,7 +79,7 @@ Credentials stay server-side and are never bundled into React.
 - `PUT /api/sheets/rows/{row_number}?mode=demo` writes only the selected row range.
 - `POST /api/sheets/rows?mode=demo` appends one row.
 - `DELETE /api/sheets/rows/{row_number}?mode=demo` removes one complete row and shifts later rows up.
-- The background task diffs snapshots every three seconds and broadcasts changes over `/ws/sync`.
+- The background task diffs snapshots every ten seconds and broadcasts changes over `/ws/sync`.
 - The frontend applies pushed snapshots without a page reload.
 
 Google Sheets has no native edit webhook for this workflow, so polling provides an expected 3–5 second sheet-to-web propagation window with a simple free-tier deployment. Free-tier cold starts may add extra delay after inactivity.
@@ -127,7 +127,7 @@ Set these Render environment variables:
 ```env
 ENVIRONMENT=production
 FRONTEND_ORIGIN=https://bajaj-earth-assessment-m1w3-kkma0s2a9.vercel.app
-POLL_INTERVAL_SECONDS=3
+POLL_INTERVAL_SECONDS=10
 DEMO_SHEET_ID=your_spreadsheet_id
 GOOGLE_SERVICE_ACCOUNT_JSON=your_complete_service_account_json
 GOOGLE_OAUTH_CLIENT_JSON=your_complete_oauth_client_json

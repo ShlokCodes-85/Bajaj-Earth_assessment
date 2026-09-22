@@ -6,7 +6,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     environment: str = "development"
     frontend_origin: str = "http://localhost:5173"
-    poll_interval_seconds: int = 3
+    poll_interval_seconds: int = 10
     demo_sheet_id: str = ""
     google_service_account_json: str = ""
     google_oauth_client_json: str = ""
