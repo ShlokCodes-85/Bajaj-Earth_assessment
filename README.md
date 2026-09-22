@@ -38,7 +38,7 @@ cd backend
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-Copy-Item .env.example .env
+Create env files and add appropriate api keys
 uvicorn app.main:app --reload --port 8000
 ```
 
@@ -47,11 +47,11 @@ Frontend, in a second terminal:
 ```powershell
 cd frontend
 npm install
-Copy-Item .env.example .env
+Create env files and add appropriate api keys
 npm run dev
 ```
 
-Open `http://localhost:5173`. Without Google credentials, the backend uses an in-memory demo sheet seeded with four rows, so the complete demo UI and API flow is runnable locally.
+Open `https://bajaj-earth-assessment-m1w3-kkma0s2a9.vercel.app/`. Without Google credentials, the backend uses an in-memory demo sheet seeded with four rows, so the complete demo UI and API flow is runnable locally.
 
 ## Google Sheets Setup
 
@@ -62,12 +62,12 @@ Open `http://localhost:5173`. Without Google credentials, the backend uses an in
 5. Set these backend variables in `backend/.env`:
 
 ```env
-FRONTEND_ORIGIN=http://localhost:5173
+FRONTEND_ORIGIN=http://your-frontend-domain
 POLL_INTERVAL_SECONDS=10
 DEMO_SHEET_ID=your_spreadsheet_id
 GOOGLE_SERVICE_ACCOUNT_JSON={"type":"service_account",...}
 GOOGLE_OAUTH_CLIENT_JSON=path/to/oauth_client.json
-GOOGLE_OAUTH_REDIRECT_URI=http://localhost:8000/api/auth/google/callback
+GOOGLE_OAUTH_REDIRECT_URI=http://your-backend-domain/api/auth/google/callback
 SESSION_SECRET=generate-a-long-random-secret
 ```
 
@@ -105,8 +105,8 @@ Output directory: dist
 Set these Vercel environment variables:
 
 ```env
-VITE_API_URL=https://bajaj-earth-assessment.onrender.com
-VITE_WS_URL=wss://bajaj-earth-assessment.onrender.com
+VITE_API_URL=https://your-backend-domain
+VITE_WS_URL=wss://your-backend-domain
 VITE_GOOGLE_API_KEY=your_browser_restricted_google_api_key
 ```
 
@@ -126,19 +126,19 @@ Set these Render environment variables:
 
 ```env
 ENVIRONMENT=production
-FRONTEND_ORIGIN=https://bajaj-earth-assessment-m1w3-kkma0s2a9.vercel.app
+FRONTEND_ORIGIN=https://your-frontend-domain
 POLL_INTERVAL_SECONDS=10
 DEMO_SHEET_ID=your_spreadsheet_id
 GOOGLE_SERVICE_ACCOUNT_JSON=your_complete_service_account_json
 GOOGLE_OAUTH_CLIENT_JSON=your_complete_oauth_client_json
-GOOGLE_OAUTH_REDIRECT_URI=https://bajaj-earth-assessment.onrender.com/api/auth/google/callback
+GOOGLE_OAUTH_REDIRECT_URI=https://your-backend-domain/api/auth/google/callback
 SESSION_SECRET=your_long_random_secret
 ```
 
 The Google OAuth consent configuration must include:
 
 ```text
-https://bajaj-earth-assessment.onrender.com/api/auth/google/callback
+https://your-backend-domain/api/auth/google/callback
 ```
 
 The backend CORS allowlist includes the deployed Vercel origin and local development origin. The `FRONTEND_ORIGIN` setting is also included so a custom frontend domain can be added without changing application code.
