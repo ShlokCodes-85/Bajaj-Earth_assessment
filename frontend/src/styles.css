@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Manrope', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --color-ink: #20211e;
+  --color-paper: #f5f2ea;
+  --color-warm: #e9e4d7;
+  --color-line: #dcd6c8;
+  --color-gold: #a67932;
+  --color-moss: #54735c;
+  --color-rust: #b45e44;
+}
+
+:root { font-family: 'Manrope', sans-serif; color: #20211e; background: #f5f2ea; font-synthesis: none; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: #f5f2ea; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+::selection { background: #d8c28f; color: #20211e; }
+
+.paper-grid {
+  background-color: #f5f2ea;
+  background-image: linear-gradient(rgba(32,33,30,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(32,33,30,.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.fade-up { animation: fade-up .6s both; }
+.fade-up-delay { animation: fade-up .6s .12s both; }
+@keyframes fade-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 640px) {
+  .paper-grid { background-size: 24px 24px; }
+}
