@@ -110,7 +110,7 @@ def read_sheet(mode: Mode) -> SheetSnapshot:
         raise HTTPException(status_code=502, detail=f"Google Sheets unavailable: {error}") from error
 
 
-@app.get("/api/health")
+@app.api_route("/api/health", methods=["GET", "HEAD"])
 async def health():
     return {"status": "ok", "environment": settings.environment, "sheets_configured": bool(sheet_service.client)}
 
