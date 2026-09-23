@@ -17,17 +17,36 @@ The application uses one Python backend service. There is no separate Node.js AP
 ## Structure
 
 ```text
-frontend/
-	src/App.jsx          dashboard and sync state
-	src/api.js           REST and WebSocket contract
-	src/styles.css       Tailwind theme and motion
-	vite.config.js
-backend/
-	app/main.py          REST routes, WebSocket endpoint, polling lifecycle
-	app/models.py        request and snapshot models
-	app/sheet_service.py Google Sheets adapter and demo fallback
-	app/config.py        environment settings
-```
+Bajaj-Earth_assessment/
+├── backend/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── config.py
+│   │   ├── main.py
+│   │   ├── models.py
+│   │   ├── personal_sheet_service.py
+│   │   └── sheet_service.py
+│   ├── README.md
+│   └── requirements.txt
+├── frontend/
+│   ├── public/
+│   │   ├── bajaj-earths-logo.png
+│   │   ├── privacy.html
+│   │   └── terms.html
+│   ├── src/
+│   │   ├── api.js
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── styles.css
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── vercel.json
+│   └── vite.config.js
+├── .gitignore
+├── LICENSE
+└── README.md```
 
 ## Run Locally
 
